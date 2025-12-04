@@ -1,0 +1,33 @@
+<html>
+<head>
+  <style>.err {color: red} </style>
+  <title>Login</title>
+</head>
+<body>
+{% include 'header.html' %}
+
+<h1>Input your credentials:</h1>
+<div>
+  {% if error %}
+    <h3 class="err">Invalid login or password!</h3>
+  {% endif %}
+
+  <form action="/login" method="post">
+    <table>
+      <tr>
+        <td>Login:</td>
+        <td><input type="text" name="login"></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="pwd"></td>
+      </tr>
+      <tr>
+        <td><input type="reset" value="Reset form"></td>
+        <td><input type="submit" value="Login"><input type="hidden" value="{{return_url}}" name="referer"></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

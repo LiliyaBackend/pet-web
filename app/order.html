@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Review order</title>
+</head>
+<body>
+{% include 'header.html' %}
+
+<h1>Your order <b>{{order.order_number}}</b> has been started to process!</h1>
+<h2>Your items to calculate</h2>
+<table border="1">
+  <tr><th>No</th><th>Function</th><th>Parameter</th></tr>
+      {% for item in order.items %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{item.item.name}}</td>
+            <td>{{item.price}}</td>
+        </tr>
+      {% endfor %}
+</table>
+
+<div>
+  <br>
+  Billing information:
+  <br>
+    <table>
+      <tr><td>Delivery address:</td><td>{{order.address}}</td></tr>
+      <tr><td>Credit card number:</td><td>{{order.card}}</td></tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+  <title>Selected items (cart)</title>
+</head>
+<body>
+{% include 'header.html' %}
+
+<h2>Your items to calculate</h2>
+    <table border="1">
+      <tr><th>No</th><th>Function</th><th>Parameter</th></tr>
+      {% for item in cart.items %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{item.operation.name}}</td>
+            <td>{{item.operand}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+<div>
+  <br>
+  Please specify destination address and payment type:
+  <br>
+  <form action="/payment" method="post">
+    <table>
+      <tr><td>Delivery address:</td><td><input name="addr"/></td></tr>
+      <tr><td>Credit card number:</td><td><input name="credit_card"/></td></tr>
+      <tr><td>&nbsp;</td><td><input type="submit" value="Next"></td></tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

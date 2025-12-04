@@ -1,0 +1,13 @@
+<table border="1">
+  <tr>
+  <td><a href="/">Items</a></td>
+  <td><a href="/cart">Cart [<span id="itemCnt">{{cart.items|length}}</span>]</a></td>
+  <td>
+<!--      {{request.session.login}} -->
+      {% if request.session.login %}
+        Hi, {{request.session.login}}! <form style="display: inline" action="/logout" method="post"><input type="submit" value="Logout"></form>
+      {% else %}
+        <a href="/register">Register</a> | <a href="/login">Login</a>
+      {% endif %}
+  </td></tr>
+</table>
